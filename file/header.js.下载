@@ -1,0 +1,77 @@
+
+$(".header-nav li").each(function () {
+    var e = $(this).find(".sub").length
+    if (e >= 1) {
+        $(this).addClass("hov-sub");
+
+    }
+});
+
+//打开搜索
+$(".open-search").click(function (e) {
+    if ($(this).hasClass("open-search-show")) {
+        $(this).removeClass("open-search-show");
+    } else {
+        $(this).addClass("open-search-show");
+    }
+    $(".hsearch-box").stop(true, true).fadeToggle();
+    $(document).on("click", function () {
+        $(".hsearch-box").stop(true, true).fadeOut();
+        $(".open-search").removeClass("open-search-show");
+    });
+    e.stopPropagation();
+});
+$(".hsearch-box").on("click", function (e) {
+    e.stopPropagation();
+});
+
+
+
+    if (screen.width >= 1024){
+        $(".header-nav li").each(function () {
+            var e = $(this).find(".sub").length
+            if (e >= 1) {
+                $(this).addClass("hov-sub");
+                $(this).mouseDelay(false).hover(function (e) {
+                    $(this).find(".sub").stop(true, true).slideDown();
+                    $(this).addClass("hover");
+                }, function () {
+                    $(this).removeClass("hover");
+                    $(this).find(".sub").stop(true, true).slideUp();
+                });
+            }
+        });
+        $(".header-child").mouseDelay(false).hover(function (e) {
+            $(this).find(".list").slideDown();
+        },function () {
+            $(this).find(".list").slideUp();
+        });
+
+
+    }else {
+        $(".header-nav ul li em").click(function(){
+            $(this).toggleClass("on").siblings(".header-nav ul li em").removeClass("on")
+            $(this).next(".sub").slideToggle(500).siblings(".sub").slideUp(500);
+        });
+        $(".header-child em").click(function(){
+            $(this).toggleClass("on").siblings(".header-child em").removeClass("on")
+            $(this).next(".list").slideToggle(500).siblings(".list").slideUp(500);
+        });
+        $(".sub-icon").click(function(){
+            $(".sub").animate({
+                width:'0'
+            },'100');
+        });
+        $(".sub-icon").click(function(){
+            $(".list").animate({
+                width:'0'
+            },'100');
+        });
+        $(".hov-sub em a").attr("href","javascript:void(0);");
+
+    }
+
+
+
+
+

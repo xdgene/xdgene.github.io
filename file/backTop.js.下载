@@ -1,0 +1,15 @@
+$(function() {  
+    $(window).scroll(function() {  
+        if ($(this).scrollTop() > 1) { //当window的scrolltop距离大于1时，go to top按钮淡出，反之淡入  
+            $("#gotoTop").fadeIn();  
+        } else {  
+            $("#gotoTop").fadeOut();  
+        }  
+    });  
+    $("#gotoTop").click(function() {  
+        $("html,body").animate({  
+            scrollTop: 0  
+        }, 400); //点击go to top按钮时，以400的速度回到顶部，这里的400可以根据你的需求修改  
+        return false;  
+    });  
+}) 
